@@ -1,12 +1,62 @@
 Set 1 Questions:
 
 1. The bug does not always move to a new location. For example, if the bug is completely surrounded by rocks, it cannot move to a new spot.
+
 2. The bug moves tries to move in the direction it is facing. If it is unable to move, it turns 45 degrees clockwise and tries to move. The bug continues in this motion, trying to find a spot for it to move. 
+
 3. The bug keeps turning in its location, in a clockwise fasion.
+
 4. The bug leaves behind flowers. The flowers left behind get darker as time goes on.
+
 5. When the bug is at the edge of the grid, and the bug is facing the edge, the bug turns to the right until it is able to move. If the bug is facing some other direction, then it will keep moving until it reaches an obstacle.
+
 6. If the bug has a rock directly in front of it, then it will turn 45 degrees clockwise until it can move.
+
 7. A flower does not move. They only change colors, as time elapses.
+
 8. Flowers change colors as time progresses. They are 'planted' after a bug goes over the square, and proceed to darken.
+
 9. A rock does not move or have any other behavior.
+
 10. A bug and a flower can be in the same location at the same time, but a bug can not appear in the same square as any other actor.
+
+Exercises:
+1. 0   - North
+   45  - NorthEast
+   90  - East
+   135 - SouthEast
+   180 - South
+   225 - SouthWest
+   270 - West
+   315 - NorthWest
+   360 - North
+
+2. A bug moves to any location on the grid, facing the same original direction. The bug moves until there is an obstacle in its way. The bug cannot move outside of the grid, an exception is listed.
+
+3. To change the color of the actors, the setColor method is used.
+
+4. The bug dissapears if a rock is placed on it and is later moved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
