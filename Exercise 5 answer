@@ -1,0 +1,10 @@
+5. Study the code for the BoxBugRunner class. Summarize the steps you would use to add another BoxBug 
+actor to the grid.
+
+To add another BoxBug actor to the grid, create the object with the side length wanted. 
+     BoxBug newBug = new BoxBug(5);
+To add the object to the grid:
+     world.add(newBug);
+          or
+    world.add(new Location(7,6), newBug);
+
