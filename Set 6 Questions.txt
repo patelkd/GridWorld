@@ -1,0 +1,28 @@
+1. if (!gr.isValid(next)) {
+	return false;
+}
+It checks if the spot that the bug is going to move to is valid.
+
+2. Actor neighbor = gr.get(next);
+   return(neighbor == null) || (neighbor instanceof Flower);
+It checks if the next spot is occupied or has a flower.
+
+3. The methods that are invoked are isValid and get. These methods are called to check if the next location on the grid has a valid location and that there is a object that can be replaced.
+
+4. getAcjacentLocation is invoked, becuase it uses the bugs current direction to find its next possible location.
+
+5. getLocation, getDirection, and getGrid are invoked.
+
+6. The bug will remove itself from the grid if the next spot is outside of the grid. 
+
+7. Yes, the variable loc is needed. The bug's location is stored and is used to insert a flor in the bug's old location as the bug moves.
+
+8. The flower is the same color as the bug because the bug drops it. 
+
+9. When a bug removes itself from the grid, it will place a flower in its previous location if it moves off the grid. 
+
+10. The statements that place the flower into the grid at the bug's previous location are:
+    Flower flower = new Flower(getColor());
+    flower.putSelfInGrid(gr, loc);
+
+11. If a bug needs to turn 180 degrees, the turn method should be called 4 times.

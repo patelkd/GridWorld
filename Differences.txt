@@ -1,0 +1,9 @@
+Three Differences in ZBug:
+1. Turn() in constructor in one code but not the other
+2. If statements in act method are different
+3. private int length vs. total
+
+Three Differences in DancingBug:
+1. One code used step, the other did not
+2. Private Count vs. Steps Integer (one code set to zero in constructor)
+3. One code created a turn method, the other did not
