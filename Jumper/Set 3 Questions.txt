@@ -1,0 +1,5 @@
+1. To access the row value for locl, you call the getRow() method.
+2. The value of b after the statement is executed is false, because the two are not equal to each other.
+3. The value of loc3 after the statement is executed would be (4,4).
+4. The value of dir is 135.
+5. The getAdjacentLocation method knows which adjacent location to return based on the direction that the bug is currently facing.
