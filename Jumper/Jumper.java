@@ -10,26 +10,25 @@ import java.awt.Color;
 
 public class Jumper extends Actor
 {
-    /**
-     * Constructs a red bug.
-     */
+   
+     //red bug.
+
     public Jumper()
     {
-        setColor(Color.RED);
+        this(Color.RED);
     }
 
-    /**
-     * Constructs a bug of a given color.
-     * @param bugColor the color for this bug
-     */
+  
+    //Constructs a bug of a given color.
+     
     public Jumper(Color bugColor)
     {
         setColor(bugColor);
     }
 
-    /**
-     * Moves if it can move, turns otherwise.
-     */
+    
+    //Jumps if it can, turns otherwise.
+   
     public void act()
     {
         if (canJump())
@@ -38,18 +37,16 @@ public class Jumper extends Actor
             turn();
     }
 
-    /**
-     * Turns the bug 45 degrees to the right without changing its location.
-     */
+    //Turns the bug 45 degrees clockwise without changing its location.
+    
     public void turn()
     {
         setDirection(getDirection() + Location.HALF_RIGHT);
     }
 
-    /**
-     * Moves the bug forward, putting a flower into the location it previously
-     * occupied.
-     */
+  
+    //Bug jumps two forward; leaves no flower
+    
     public void jump()
     {
         Grid<Actor> gr = getGrid();
@@ -64,11 +61,10 @@ public class Jumper extends Actor
             removeSelfFromGrid();
     }
 
-    /**
-     * Tests whether this bug can move forward into a location that is empty or
-     * contains a flower.
-     * @return true if this bug can move.
-     */
+    
+     //Tests whether this bug can jumps into a location that is empty
+     // @return true if this bug can move.
+     
     public boolean canJump()
     {
         Grid<Actor> gr = getGrid();
@@ -81,7 +77,7 @@ public class Jumper extends Actor
             return false;
         Actor neighbor = gr.get(nextTwo);
         return (neighbor == null);
-        // ok to move into empty location or onto flower
-        // not ok to move onto any other actor
+        // ok to move into empty location
+        // not ok to move onto any other actor 
     }
 }
