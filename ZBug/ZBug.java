@@ -1,5 +1,5 @@
 import info.gridworld.actor.Bug;
-
+import info.gridworld.grid.Location;
 /**
  * A <code>BoxBug</code> traces out a square "box" of a given size. <br />
  * The implementation of this class is testable on the AP CS A and AB exams.
@@ -8,6 +8,7 @@ public class ZBug extends Bug
 {
     private int steps;
     private int sideLength;
+    private int length;
 
     /**
      * Constructs a box bug that traces a square of a given side length
@@ -15,9 +16,10 @@ public class ZBug extends Bug
      */
     public ZBug(int length)
     {
-        this.setDirection(90); 
+        this.setDirection(Location.EAST); 
         steps = 0;
-        sideLength = 4;
+        length = 1;
+        sideLength = length;
     }
 
     /**
@@ -25,19 +27,20 @@ public class ZBug extends Bug
      */
     public void act()
     {
-        if (steps < sideLength && canMove())
-        {
-            move();
-            steps++;
-        }
-        else
-        {
-
-            sideLength = 4;
-            turn();
-            turn();
-            turn();
+        if (length <= 3 && steps < sideLength) {
+            if (canMove()) {
+                move();
+                steps++;
+            }
+        } else if (length ==1) {
+            setDirection(Location.SOUTHWEST);
+            steps=0;
+            length++;
+        } else if (length == 2) {
+            setDirection(Location.EAST);
             steps = 0;
+            length++;
         }
+        
     }
 }
