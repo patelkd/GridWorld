@@ -1,0 +1,13 @@
+1. a. The jumper would turn if there is something 2 spaces in front of it.
+   b. The jumper would turn.
+   c. The jumper would turn if it is directly against and facing the edge of the grid.
+   d. The jumper would turn.
+   e. One of the jumpers would turn.
+   f. No.
+
+2. a. Jumper should extend actor.
+   b. The Bug class is similar to the Jumper class.
+   c. There should be a constructor; the parameter is color.
+   d. There Act method should be overridden.
+   e. canJump, Jump should be added.
+   f. To test the class, the Jumper should be tested in every type of situation (in front of rock, by edge, out of bounds, two jumpers, two away from a rock)
