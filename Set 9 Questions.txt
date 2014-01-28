@@ -1,0 +1,20 @@
+1. Why doesn't CrabCritter override the processActors method?
+	-When getActors is called, a CrabCritter eats its neighbors. This behavior is inherited from the Critter class.
+
+2. Describe the process a CrabCritter uses to find and eat other actors. Does it always eat all neighboring actors?
+	-The getActors method is called and looks for Actors in front positions (inlcuding front of left and right). When processActors is called, these neighbors are eaten.
+
+3. Why is the getLocationsInDirections method used in CrabCritter?
+	-CrabCritter uses the getLocationsInDirections method to reveal an array of directions for neighbors that can be "eeaten" by the CrabCritter. 
+
+4. If a CrabCritter has location (3,4) and faces south, what are the possible locations for actors that are returned by a call to the getActors method.
+	-Possible locations include (4,4) and (4,3), and (4,5) 
+
+5. What are similarities and differences between the movements of a CrabCritter and a Critter?
+	-CrabCritter and Critter are similar as they both move into a new random location without turning to face that location. CrabCritter and Critter are different as a CrabCritter will only move left and right. A Critter can move to any surround space (8 spaces) as long as it is available. If it cannot move anywhere, the Critter stays in the same spot. If a CrabCritter cannot move, it makes a random turn in its spot.
+
+6. How does a CrabCritter determine when it turns instead of moving?
+	-In the makeMove method, if loc is the same as the CrabCritter's current location, the actor will turn.
+
+7. Why don't the CrabCritter objects eat each other?
+	-

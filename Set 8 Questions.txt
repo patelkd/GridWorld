@@ -1,0 +1,17 @@
+1. Why does act cause a ChameleonCritter to act differently from a Critter even though ChameleonCritter does not override act? 
+	-ChameleonCritter overrides two methods: processActors and makeMove. This leads to a different behavior from ChameleonCritter than from Critter. ChameleonCritter also processes a random neighbor, gets its color, and changes its own color. ChameleonCritter also moves to face its next location before moving. Critter does not move to face its next location.
+
+2. Why does the makeMove method of ChameleonCritter call super.makeMove? 
+	-super.makeMove is called after the ChameleonCritter changes direction to face its new location. Calling super makes the ChameleonCritter act like a Critter, and moves the ChameleonCritter.
+
+3. How would you make the ChameleonCritter drop flowers in its old location when it moves?
+	-To drop flowers a line needs to be added into the makeMove method. This is done the same way as it is done in Bug: if the ChameleonCritter moves, a flower is dropped.
+
+4. Why doesn't ChameleonCritter override the getActors method?
+	-getActors is not overriden as all of the same actors are processed, as they are in Critter. There is no new behaviors for getActors, so there is no need to override the getActors method.
+
+5. Which class contains the getLocation method?
+	- The Actor class contains the getLocation method. 
+
+6. How can a Critter access its own grid?
+	- A critter accesses its own grid by calling getGrid, which is inherited from the Actor class.
