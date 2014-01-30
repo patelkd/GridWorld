@@ -12,70 +12,28 @@ import java.awt.Color;
  * it moves through the grid. <br />
  * The implementation of this class is testable on the AP CS A and AB exams.
  */
-public class ChameleonKid extends ModifiedChameleonCritter
+public class ChameleonKid extends ChameleonCritter
 {
-    private static final Color DEFAULT_COLOR = Color.PINK;
-    private static final double DARKENING_FACTOR = 0.05;
-    /**
-     * Randomly selects a neighbor and changes this critter's color to be the
-     * same as that neighbor's. If there are no neighbors, no action is taken.
-     */
-    public void processActors(ArrayList<Actor> actors)
-    {
-        int n = actors.size();
-        if (n == 0) {
-        
-            darkenChameleon();
-            return;
-        }
-        int r = (int) (Math.random() * n);
 
-        Actor other = actors.get(r);
-        setColor(other.getColor());
-    }
+    public ArrayList<Actor> getActors() {
+        ArayList<Actor> actors = new ArrayList<Actor>();
 
-    /**
-     * Turns towards the new location as it moves.
-     */
-    // public void makeMove(Location loc)
-    // {
-    //     setDirection(getLocation().getDirectionToward(loc));
-    //     super.makeMove(loc);
-    // }
+        Location[] locs = new Location[2];
+        locs[0] = getLocation().getAdjacentLocation(getDirection());
+        locs[1] = getLocation().getAdjacentLocation(getDirection() + 180);
 
-    public void darkenChameleon () {
-        Color c = getColor();
-        int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
-        int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
-        int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
-
-        setColor(new Color(red, green, blue));
-    }
-
-    public ArrayList<Actor> getActors() { 
-        ArrayList<Actor> actors = new ArrayList<Actor>(); 
-        int[] dirs = 
-        { Location.AHEAD, Location.HALF_CIRCLE }; 
-        for (Location loc : getLocationsInDirections(dirs)) 
-        { 
-         Actor a = getGrid().get(loc); 
-        if (a != null) 
-        actors.add(a); 
-        } 
-        return actors;
-     }
-
-     public ArrayList<Location> getLocationsInDirections(int[] directions) { 
-        ArrayList<Location> locs = new ArrayList<Location>(); 
-        Grid gr = getGrid(); 
-         Location loc = getLocation(); 
-         for (int d : directions) { 
-            Location neighborLoc = loc.getAdjacentLocation(getDirection() + d); 
-            if (gr.isValid(neighborLoc)) 
-             locs.add(neighborLoc); 
-        } 
-        return locs;
+        for (Location loc: locs) {
+            if (getGrid().isValid(loc)) {
+                Actor a = getGrid().get(loc);
+                if (a != null) {
+                    actors.add(a);
+                }
+            }
+             
+         } 
+         return actors;
     }
 
 }
+  
 
