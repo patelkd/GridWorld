@@ -1,5 +1,0 @@
-1. You can obtain a count of the objects in a grid by using getOccupiedLocatons() while checking all the spots in an array. You can obtain a count of the empty locations in a bounded grid by subtracting the number of spots obtained from getOccupiedLocations() from the total number of grid spaces.
-2. To see if (10,10) is in the grid, use boolean isValid (Location loc).
-3. The code is not supplied in the methods because the two classes, BoundedGrid<E> and UnboundedGrid<E> implement the interface Grid<E>.
-4. No, arrayLists are more useful becaus they do not require the user to set a specific size before filling it. BoundedGrids also do not keep track of the objects, so you do not know how many of them there are.
-5.

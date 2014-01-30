@@ -1,6 +1,0 @@
-1. Actor has color, direction, and location.
-2. The initial color is blue and the direction is North.
-3. The actor has both state and behavior.
-4. No, the actor can not put itself in the grid twice without removing itself first. The actor can not remove itself twice. THe actor can be placd into a grid, remove itself, and then put itself back. 
-5. An actor can turn 90 degrees to the right by using setDirection(getDirection() + Location.RIGHT);
-6.
