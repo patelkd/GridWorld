@@ -1,80 +1,97 @@
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.Critter;
 import info.gridworld.grid.Location;
-import info.gridworld.actor.Flower;
 
 import java.util.ArrayList;
+
 import java.awt.Color;
 
+public class BlusterCritter extends Critter {
 
-public class BlusterCritter extends Critter
-{
-	private int c;
-    private int counter;
-    private static final double DARKENING_FACTOR = 0.05;
+    private int c = 3;
 
+    public void processActors(ArrayList<Actor> actors)
+    {
+        int counter = 0;
 
-	public BlusterCritter() {
-		int c = 12;
-	}
-
-    public ArrayList getCritters() {
-
-        ArrayList<Actor> actors = new ArrayList<Actor>(); 
-
-        Location loc = getLocation();
-        for (int r=loc.getRow()-2; r<=loc.getRow() +2; r++) {
-            for (int c=loc.getCol()-2; c <= loc.getCol() +2 ; c++) {
-                Location temporary = new Location(r,c);
-                if (getGrid().isValid(temporary)) {
-                    Actor a = getGrid().get(temporary);
-                    if (a!= null && a !=this) {
-                        actors.add(a);
-                    }
-                }
-                
+        for (Actor a : actors) {
+            if (a instanceof Critter) {
+                counter++;
+            }
+            if (counter < c) {
+                lighten();
+            }else {
+                darken();
             }
         }
+
+    }
+
+    public ArrayList<Actor> getActors(){
+        ArrayList<Actor> actors = new ArrayList<Actor>();
+
+        for (int row = getLocation().getRow() - 2; row <= getLocation().getRow() + 2; row++) {
+            for (int col = getLocation().getCol() - 2; col <= getLocation().getCol() + 2; col++) {
+
+                Location loc = new Location(row, col);
+
+                if (getGrid().isValid(loc)) {
+                    Actor actor = getGrid().get(loc);
+
+                    if (actor != null) {
+                        actors.add(actor);
+                    }
+                }
+            }
+        }
+        actors.remove(getLocation());
         return actors;
     }
+    public void lighten(){
+        Color color = getColor();
 
+        int red = color.getRed();
+        int green = color.getGreen();
+        int blue = color.getBlue();
 
-    public void processActors(ArrayList<Actor> actors) {
-     for (Actor a : actors)
-     {
-         if ((a instanceof Critter)) {
-             counter ++;
-         }
-         if (counter < c) {
-            lighten();
-         } else {
-            darken();
-         }
+        if (red <= 200-DARKENING_FACTOR) {
+            red = (int) (color.getRed() + DARKENING_FACTOR);
+        }
 
-      } 
+        if (green <= 200-DARKENING_FACTOR) {
+            green = (int) (color.getGreen() + DARKENING_FACTOR);
+        }
 
-    }
-
-    public void darken() {
-
-        Color c = getColor();
-        int red = (int) (c.getRed() * (1 - DARKENING_FACTOR));
-        int green = (int) (c.getGreen() * (1 - DARKENING_FACTOR));
-        int blue = (int) (c.getBlue() * (1 - DARKENING_FACTOR));
+        if (blue <= 200-DARKENING_FACTOR) {
+            blue = (int) (color.getBlue() + DARKENING_FACTOR);
+        }
 
         setColor(new Color(red, green, blue));
     }
 
-    public void lighten() {
-        Color c = getColor();
-        int red = (int) (c.getRed() * (DARKENING_FACTOR-1));
-        int green = (int) (c.getGreen() * (DARKENING_FACTOR-1));
-        int blue = (int) (c.getBlue() * (DARKENING_FACTOR-1));
+    private static final double DARKENING_FACTOR = 50;
+
+    public void darken(){
+        Color color = getColor();
+
+        int red = color.getRed();
+        int green = color.getGreen();
+        int blue = color.getBlue();
+
+        if (red >= 200-DARKENING_FACTOR) {
+            red = (int) (color.getRed() - DARKENING_FACTOR);
+        }
+        if (green >= 200-DARKENING_FACTOR) {
+            green = (int) (color.getGreen() - DARKENING_FACTOR);
+        }
+        if (blue >= 200-DARKENING_FACTOR) {
+            blue = (int) (color.getBlue() - DARKENING_FACTOR);
+        }
 
         setColor(new Color(red, green, blue));
+
     }
+
     
-
 }
-  
 
