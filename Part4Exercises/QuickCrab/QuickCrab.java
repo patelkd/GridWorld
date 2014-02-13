@@ -1,36 +1,38 @@
-import info.gridworld.actor.Actor; 
-import info.gridworld.actor.Critter; 
-import info.gridworld.grid.Grid; 
-import info.gridworld.grid.Location; 
-import java.awt.Color; 
-import java.util.ArrayList; 
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Critter;
+import info.gridworld.grid.Grid;
+import info.gridworld.grid.Location;
+
+import java.awt.Color;
+import java.util.ArrayList;
+
+public class QuickCrab extends CrabCritter {
+
+	public ArrayList<Location> getMoveLocations() {
+
+	    ArrayList<Location> locs = new ArrayList<Location>();
+
+		int l = getDirection() - 90;
+		int r = getDirection() + 90;
+
+		getTwoMovesAway(locs, r);
+		getTwoMovesAway(locs, r);
+
+	    return locs;
+	}
+
+	public void  getTwoMovesAway(ArrayList<Location> locs, int direction) {
+
+	Location neighborLoc1 = getLocation().getAdjacentLocation(direction);
+
+	if (getGrid().isValid(neighborLoc1) && getGrid().get(neighborLoc1) == null) {
+		Location neighborLoc2 = neighborLoc1.getAdjacentLocation(direction);
+		if (getGrid().isValid(neighborLoc2) && getGrid().get(neighborLoc2) == null) {
+			locs.add(neighborLoc2); 
+		}
+	}
 
 
+	}
 
-public class QuickCrab extends CrabCritter { 
- 
-    public QuickCrab() { 
-        setColor(Color.CYAN); 
-    } 
-
-    public ArrayList<Location> getMoveLocations() { 
-        ArrayList<Location> locs = new ArrayList<Location>(); 
-        Grid g = getGrid(); 
-        twoMovesAway(locs,getDirection() + Location.LEFT); 
-        twoMovesAway(locs,getDirection() + Location.RIGHT); 
-        if (locs.size() == 0) 
-        return super.getMoveLocations(); 
-        return locs; 
- } 
-
-    private void twoMovesAway(ArrayList<Location> locs,int dir) { 
-        Grid g = getGrid(); 
-        Location loc = getLocation(); 
-        Location temp = loc.getAdjacentLocation(dir); 
-        if(g.isValid(temp) && g.get(temp) == null) { 
-            Location loc2 = temp.getAdjacentLocation(dir); 
-        if(g.isValid(loc2) && g.get(loc2)== null) 
-            locs.add(loc2); 
-        } 
-    } 
 }
